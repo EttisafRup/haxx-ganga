@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+.gradient {
+  background: linear-gradient(130deg, #000 50%, #ff0000 100%);
+}
+.popout {
+  transition: 0.7s !important;
+}
+.animatedhide {
+  margin-top: -50rem;
+  transition: 0.7s;
+}
