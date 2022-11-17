@@ -3,43 +3,37 @@ import { useRef } from "react"
 const Navbar = () => {
   const navRef: any = useRef()
   const popNavigator = () => {
+    document.getElementsByClassName("home")[0].classList.toggle("animatedhide")
     navRef.current.classList.toggle("animatedhide")
   }
 
   return (
-    <header className="z-20 text-gray-600 body-font shadow-lg">
+    <header className=" text-gray-600 body-font shadow-lg">
       <div className="hidden gradient w-full lg:block border-b fixed text-white">
         <div className="container mx-auto flex flex-wrap px-5 py-4 flex-col md:flex-row items-center">
           <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <img
-              src="img/logo.png"
-              style={{
-                width: "50px",
-                borderRadius: "50%",
-                cursor: "pointer",
-              }}
-              alt=""
-            />
-            <a href="/home">
+            <a href="/">
               <span className="ml-3 text-xl tracking-wide text-white">
-                &rarr;<span style={{ color: "#ff0022" }}>b</span>USSINESS
-                <span style={{ color: "ff0022" }}>&#9765;</span>ASSETS
+                ha<span className="text-red-700">x</span>x
+                <span className="text-red-700">&#9765;</span>Ganga
               </span>
             </a>
           </a>
           <nav className="md:mr-auto bangla md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-1/2xl justify-center">
-            <a href="#courses" className="mr-5 font-bold">
+            <a href="/readme" className="mr-5 font-bold">
               README
             </a>
           </nav>
-          <a href="/profile">
+          <a href="/signup">
             <button className="inline-flex items-center transition-all bg-black border-0 py-1 px-3 focus:outline-none hover:bg-gray-800 rounded text-white mt-4 md:mt-0">
-              Profile
+              Signup
             </button>
           </a>
-          <button className="inline-flex items-center bg-red-700 transition-all border-0 py-1 px-3 ml-2 focus:outline-none hover:bg-gray-900 rounded text-white mt-4 md:mt-0">
-            LogOut
-          </button>
+          <a href="/login">
+            <button className="inline-flex items-center bg-red-700 transition-all border-0 py-1 px-3 ml-2 focus:outline-none hover:bg-gray-900 rounded text-white mt-4 md:mt-0">
+              LogIn
+            </button>
+          </a>
         </div>
       </div>
       {/* Button Hamburger */}
@@ -73,12 +67,15 @@ const Navbar = () => {
           ref={navRef}
           className="animatedhide popout text-center absolute top-0 left-0 w-full"
         >
-          <div className="p-5 bg-white border rounded shadow-sm">
+          <div
+            style={{ zIndex: "20" }}
+            className="p-5 bg-white border rounded shadow-sm"
+          >
             <div className="flex items-center justify-between mb-4">
               <div className="rounded-xl py-2 px-4 tracking-wider">
                 <label className="text-xl font-semibold text-black tracking-wider">
-                  &rarr;<span style={{ color: "#ff0022" }}>b</span>USSINESS
-                  <span style={{ color: "#ff0022" }}>&#9765;</span>ASSETS
+                  ha<span className="text-red-600">x</span>x
+                  <span className="text-red-600">&#9765;</span>Ganga
                 </label>
               </div>
               <div>
@@ -93,26 +90,28 @@ const Navbar = () => {
               </div>
             </div>
             <nav>
-              <ul className="space-y-4">
+              <ul className="relative w-full space-y-4 bg-white">
                 <li>
                   <a
-                    href="#courses"
-                    aria-label="Our product"
-                    title="Our product"
+                    href="/readme"
                     className="bangla font-bold tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
                   >
                     README
                   </a>
                 </li>
+
                 <div className="py-3">
-                  <a href="/profile">
-                    <button className="inline-flex items-center transition-all bg-black border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-white mt-4 md:mt-0">
-                      Profile
+                  <a href="/signup">
+                    <button className="inline-flex items-center transition-all bg-black border-0 py-1 px-3 focus:outline-none hover:bg-gray-800 rounded text-white mt-4 md:mt-0">
+                      Signup
                     </button>
                   </a>
-                  <button className="inline-flex items-center bg-red-600 transition-all border-0 py-1 px-3 ml-2 focus:outline-none hover:bg-red-500 rounded text-white mt-4 md:mt-0">
-                    LogOut
-                  </button>
+
+                  <a href="/login">
+                    <button className="inline-flex items-center bg-red-700 transition-all border-0 py-1 px-3 ml-2 focus:outline-none hover:bg-gray-900 rounded text-white mt-4 md:mt-0">
+                      LogIn
+                    </button>
+                  </a>
                 </div>
               </ul>
             </nav>
