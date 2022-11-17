@@ -3,13 +3,17 @@ import { useRef } from "react"
 const Navbar = () => {
   const navRef: any = useRef()
   const popNavigator = () => {
-    document.getElementsByClassName("home")[0].classList.toggle("animatedhide")
+    if (document.getElementsByClassName("home")[0])
+      document
+        .getElementsByClassName("home")[0]
+        .classList.toggle("animatedhide")
+
     navRef.current.classList.toggle("animatedhide")
   }
 
   return (
-    <header className=" text-gray-600 body-font shadow-lg">
-      <div className="hidden gradient w-full lg:block border-b fixed text-white">
+    <header className="text-gray-600 body-font shadow-lg">
+      <div className="hidden gradient w-full lg:block border-b text-white">
         <div className="container mx-auto flex flex-wrap px-5 py-4 flex-col md:flex-row items-center">
           <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             <a href="/">
@@ -73,10 +77,12 @@ const Navbar = () => {
           >
             <div className="flex items-center justify-between mb-4">
               <div className="rounded-xl py-2 px-4 tracking-wider">
-                <label className="text-xl font-semibold text-black tracking-wider">
-                  ha<span className="text-red-600">x</span>x
-                  <span className="text-red-600">&#9765;</span>Ganga
-                </label>
+                <a className="cursor-pointer" href="/">
+                  <label className="text-xl font-semibold text-black tracking-wider">
+                    ha<span className="text-red-600">x</span>x
+                    <span className="text-red-600">&#9765;</span>Ganga
+                  </label>
+                </a>
               </div>
               <div>
                 <button

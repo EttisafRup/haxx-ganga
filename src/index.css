@@ -38,3 +38,30 @@ body {
   transform: rotateX(560deg);
   inset: -100vmax;
 }
+
+.avatar-div {
+  text-align: center;
+  padding: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+#inputTag {
+  display: none;
+}
+.avatar-label {
+  cursor: pointer;
+}
+#break {
+  margin-top: 0.5rem;
+}
+#imageName {
+  color: white;
+  text-shadow: 0 0 0.3rem white;
+}
+.fa {
+  border-radius: 50%;
+  border: 2px solid white;
+  padding: 13px;
+}

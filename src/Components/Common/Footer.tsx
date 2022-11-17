@@ -40,22 +40,22 @@ const Footer = () => {
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a className="text-white hover:text-pink-700 cursor-pointer">
+                <a className="text-white hover:text-red-700 cursor-pointer">
                   Purpose
                 </a>
               </li>
               <li>
-                <a className="text-white hover:text-pink-700 cursor-pointer">
+                <a className="text-white hover:text-red-700 cursor-pointer">
                   Educational Access
                 </a>
               </li>
               <li>
-                <a className="text-white hover:text-pink-700 cursor-pointer">
+                <a className="text-white hover:text-red-700 cursor-pointer">
                   Terms and Policies
                 </a>
               </li>
               <li>
-                <a className="text-white hover:text-pink-700 cursor-pointer">
+                <a className="text-white hover:text-red-700 cursor-pointer">
                   Restrictions
                 </a>
               </li>
@@ -70,7 +70,7 @@ const Footer = () => {
                 <a
                   href="http://xanimehub.netlify.com/"
                   target="_blank"
-                  className="text-white hover:text-pink-700"
+                  className="text-white hover:text-red-700"
                 >
                   AnimeHub
                 </a>
@@ -79,7 +79,7 @@ const Footer = () => {
                 <a
                   href="http://trendoposts.onrender.com"
                   target="_blank"
-                  className="text-white hover:text-pink-700"
+                  className="text-white hover:text-red-700"
                 >
                   trendoposts
                 </a>
@@ -88,7 +88,7 @@ const Footer = () => {
                 <a
                   href="https://xalarm.netlify.app/"
                   target="_blank"
-                  className="text-white hover:text-pink-700"
+                  className="text-white hover:text-red-700"
                 >
                   xAlarm
                 </a>
@@ -97,7 +97,7 @@ const Footer = () => {
                 <a
                   href="https://etticodes.onrender.com/"
                   target="_blank"
-                  className="text-white hover:text-pink-700"
+                  className="text-white hover:text-red-700"
                 >
                   ettiCodes
                 </a>
@@ -113,7 +113,7 @@ const Footer = () => {
                 <a
                   href="https://www.facebook.com/xtend.etti.5"
                   target="_blank"
-                  className="text-white hover:text-pink-700"
+                  className="text-white hover:text-red-700"
                 >
                   Facebook
                 </a>
@@ -122,13 +122,13 @@ const Footer = () => {
                 <a
                   href="https://github.com/EttisafRup"
                   target="_blank"
-                  className="text-white hover:text-pink-700"
+                  className="text-white hover:text-red-700"
                 >
                   Github
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white hover:text-pink-700">
+                <a href="#" className="text-white hover:text-red-700">
                   ettisafrup@gmail.com
                 </a>
               </li>
@@ -136,7 +136,7 @@ const Footer = () => {
                 <a
                   href="https://www.youtube.com/channel/UCeFc-dfgYBAKMWOT5mInYvw"
                   target="_blank"
-                  className="text-white hover:text-pink-700"
+                  className="text-white hover:text-red-700"
                 >
                   Youtube
                 </a>
@@ -161,7 +161,7 @@ const Footer = () => {
                   className="w-full bg-transparent bg-opacity-50 rounded border border-gray-300 focus:border-red-700 outline-none text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
               </div>
-              <button className="lg:mt-2 xl:mt-0 my-5 md:my-0 inline-flex text-white border-2 font-semibold hover:bg-white hover:text-black transition py-2 px-6 focus:outline-none rounded">
+              <button className="lg:mt-2 xl:mt-0 inline-flex text-white border-2 font-semibold hover:bg-white hover:text-black transition py-2 px-6 focus:outline-none rounded">
                 Subscribe
               </button>
             </div>
