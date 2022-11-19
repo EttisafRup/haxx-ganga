@@ -6,6 +6,7 @@ const Signup = () => {
   const [email, setEmail] = useState("")
   const [mobile, setMobile] = useState("")
   const [password, setPassword] = useState("")
+  const [userUpdate, setUserUpdate] = useState("")
 
   const submitUserForm = async (e: any) => {
     e.preventDefault()
@@ -16,8 +17,7 @@ const Signup = () => {
         mobile,
         password,
       })
-
-      console.log(result)
+      setUserUpdate(result.data.message)
     } catch (err) {
       console.log(err)
     }
@@ -30,10 +30,11 @@ const Signup = () => {
           <div className="bg-white m-4 text-center px-6 py-8 rounded shadow-md text-black w-full">
             <big>
               <strong>Signup</strong> with <strong>{env.app}</strong>
+              <p className="font-semibold text-black text-sm">{userUpdate}</p>
             </big>
 
             <form id="blog-form" method="post" action="/register">
-              <div className="avatar-div">
+              {/* <div className="avatar-div">
                 <label className="avatar-label text-black" htmlFor="inputTag">
                   &#128247;
                   <p className="m-4"></p>
@@ -42,11 +43,11 @@ const Signup = () => {
                   <p id="break"></p>
                   <span id="imageName"></span>
                 </label>
-              </div>
+              </div> */}
               <textarea
                 className="block border h-12 w-full p-3 rounded mb-4"
                 name="username"
-                placeholder="Full Name"
+                placeholder="Github Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               ></textarea>
