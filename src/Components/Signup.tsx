@@ -1,6 +1,28 @@
+import { useState } from "react"
 import env from "../env/env"
-
+import axios from "axios"
 const Signup = () => {
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [mobile, setMobile] = useState("")
+  const [password, setPassword] = useState("")
+
+  const submitUserForm = async (e: any) => {
+    e.preventDefault()
+    try {
+      const result = await axios.post("http://localhost:4000/signup", {
+        username,
+        email,
+        mobile,
+        password,
+      })
+
+      console.log(result)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <div>
       <div className="bg-grey-lighter min-h-screen flex flex-col">
@@ -23,31 +45,39 @@ const Signup = () => {
               </div>
               <textarea
                 className="block border h-12 w-full p-3 rounded mb-4"
-                name="title"
+                name="username"
                 placeholder="Full Name"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               ></textarea>
 
               <p className="text-red-700 mb-1 error title-error"></p>
 
               <textarea
                 className="block border w-full h-12 p-3 rounded mb-4"
-                name="subtitle"
+                name="email"
                 placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               ></textarea>
 
               <p className="text-red-700 mb-1 error subtitle-error"></p>
               <textarea
                 className="block border h-12  w-full p-3 rounded mb-4"
-                name="description"
+                name="mobile"
                 placeholder="Mobile Number"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
               ></textarea>
 
               <p className="text-red-700 mb-1 error description-error"></p>
 
               <textarea
                 className="block border h-12  w-full p-3 rounded mb-4"
-                name="description"
+                name="password"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               ></textarea>
 
               <p className="text-red-700 mb-1 error description-error"></p>
@@ -61,6 +91,7 @@ const Signup = () => {
               <button
                 type="submit"
                 className="w-full text-center py-3 rounded bg-red-500 hover:bg-red-700 transition text-white hover:bg-green-dark focus:outline-none my-1"
+                onClick={submitUserForm}
               >
                 Signup
               </button>
