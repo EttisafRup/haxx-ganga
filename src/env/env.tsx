@@ -26,7 +26,7 @@ const env = {
       },
     },
   ],
-  server: "https://haxxganga.onrender.com/",
+  server: "https://haxxganga.onrender.com",
 }
 
 export default env

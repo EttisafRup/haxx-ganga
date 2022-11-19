@@ -7,6 +7,7 @@ import Readme from "./Components/Common/Readme"
 import Login from "./Components/Login"
 import Error from "./Components/Common/Error"
 import Signup from "./Components/Signup"
+import OTP from "./Components/OTP"
 
 function App() {
   return (
@@ -15,11 +16,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/readme" element={<Readme />} />
-          <Route path="/email-sender" element={<EmailSender />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/signup/otp-validation" element={<OTP />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<Error />} />
+          <Route path="/readme" element={<Readme />} />
+          <Route path="/email-sender" element={<EmailSender />} />
         </Routes>
       </BrowserRouter>
       <Footer />

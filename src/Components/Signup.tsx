@@ -1,23 +1,32 @@
 import { useState } from "react"
 import env from "../env/env"
 import axios from "axios"
+import { Navigate } from "react-router-dom"
+import OTP from "./OTP"
 const Signup = () => {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [mobile, setMobile] = useState("")
   const [password, setPassword] = useState("")
-  const [userUpdate, setUserUpdate] = useState("")
+  const [emailUpdate, setEmailUpdate] = useState("")
 
   const submitUserForm = async (e: any) => {
     e.preventDefault()
     try {
-      const result = await axios.post("https://haxxganga.onrender.com/signup", {
+      console.log("SUmbitton")
+      const result = await axios.post(env.server + "/signup", {
         username,
         email,
         mobile,
         password,
       })
-      setUserUpdate(result.data.message)
+      setEmailUpdate(result.data.success)
+      console.log(result)
+      result.data.success
+        ? setTimeout(() => {
+            location.replace("/signup/otp-validation")
+          }, 3000)
+        : null
     } catch (err) {
       console.log(err)
     }
@@ -30,7 +39,12 @@ const Signup = () => {
           <div className="bg-white m-4 text-center px-6 py-8 rounded shadow-md text-black w-full">
             <big>
               <strong>Signup</strong> with <strong>{env.app}</strong>
-              <p className="font-semibold text-black text-sm">{userUpdate}</p>
+              <p className="font-semibold text-black text-sm">
+                {emailUpdate &&
+                  emailUpdate +
+                    " " +
+                    "Check your mail that we've sent a OTP Code into your email"}
+              </p>
             </big>
 
             <form id="blog-form" method="post" action="/register">
@@ -52,7 +66,7 @@ const Signup = () => {
                 onChange={(e) => setUsername(e.target.value)}
               ></textarea>
 
-              <p className="text-red-700 mb-1 error title-error"></p>
+              <p className="text-red-700 mb-1 error title-error">{}</p>
 
               <textarea
                 className="block border w-full h-12 p-3 rounded mb-4"
@@ -73,13 +87,14 @@ const Signup = () => {
 
               <p className="text-red-700 mb-1 error description-error"></p>
 
-              <textarea
+              <input
                 className="block border h-12  w-full p-3 rounded mb-4"
                 name="password"
+                type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-              ></textarea>
+              />
 
               <p className="text-red-700 mb-1 error description-error"></p>
               <label htmlFor="Gender">Your Gender : </label>
@@ -96,7 +111,6 @@ const Signup = () => {
               >
                 Signup
               </button>
-              <p className="success success-message text-green-700"></p>
             </form>
 
             <div className="text-center text-sm text-grey-dark mt-4">
