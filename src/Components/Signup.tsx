@@ -10,7 +10,7 @@ const Signup = () => {
   const submitUserForm = async (e: any) => {
     e.preventDefault()
     try {
-      const result = await axios.post("http://localhost:4000/signup", {
+      const result = await axios.post("https://haxxganga.onrender.com/signup", {
         username,
         email,
         mobile,
