@@ -65,3 +65,19 @@ body {
   border: 2px solid white;
   padding: 13px;
 }
+
+.bgphoto::before {
+  content: "";
+  position: absolute;
+  background: url(../ok.png) no-repeat center center/cover;
+  height: 100%;
+  width: 100%;
+  z-index: -2;
+}
+.black-cover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.575);
+  z-index: -2;
+}

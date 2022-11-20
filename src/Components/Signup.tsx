@@ -1,25 +1,21 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import env from "../env/env"
 import axios from "axios"
-import { Navigate } from "react-router-dom"
-import OTP from "./OTP"
 const Signup = () => {
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [mobile, setMobile] = useState("")
-  const [password, setPassword] = useState("")
+  const [data, setData] = useState({
+    username: "",
+    email: "",
+    mobile: "",
+    password: "",
+  })
+  console.log(data)
   const [emailUpdate, setEmailUpdate] = useState("")
 
   const submitUserForm = async (e: any) => {
     e.preventDefault()
     try {
       console.log("SUmbitton")
-      const result = await axios.post(env.server + "/signup", {
-        username,
-        email,
-        mobile,
-        password,
-      })
+      const result = await axios.post(env.server + "/signup", data)
       setEmailUpdate(result.data.success)
       console.log(result)
       result.data.success
@@ -31,15 +27,15 @@ const Signup = () => {
       console.log(err)
     }
   }
-
   return (
-    <div>
+    <div className="bgphoto">
+      <div className="black-cover"></div>
       <div className="bg-grey-lighter min-h-screen flex flex-col">
         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
           <div className="bg-white m-4 text-center px-6 py-8 rounded shadow-md text-black w-full">
             <big>
               <strong>Signup</strong> with <strong>{env.app}</strong>
-              <p className="font-semibold text-black text-sm">
+              <p className="font-semibold m-2 text-black text-sm">
                 {emailUpdate &&
                   emailUpdate +
                     " " +
@@ -58,32 +54,32 @@ const Signup = () => {
                   <span id="imageName"></span>
                 </label>
               </div> */}
-              <textarea
+              <input
                 className="block border h-12 w-full p-3 rounded mb-4"
                 name="username"
                 placeholder="Github Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              ></textarea>
+                value={data.username}
+                onChange={(e) => setData({ ...data, username: e.target.value })}
+              />
 
               <p className="text-red-700 mb-1 error title-error">{}</p>
 
-              <textarea
+              <input
                 className="block border w-full h-12 p-3 rounded mb-4"
                 name="email"
                 placeholder="Email Address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              ></textarea>
+                value={data.email}
+                onChange={(e) => setData({ ...data, email: e.target.value })}
+              />
 
               <p className="text-red-700 mb-1 error subtitle-error"></p>
-              <textarea
+              <input
                 className="block border h-12  w-full p-3 rounded mb-4"
                 name="mobile"
                 placeholder="Mobile Number"
-                value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
-              ></textarea>
+                value={data.mobile}
+                onChange={(e) => setData({ ...data, mobile: e.target.value })}
+              />
 
               <p className="text-red-700 mb-1 error description-error"></p>
 
@@ -92,15 +88,24 @@ const Signup = () => {
                 name="password"
                 type="password"
                 placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={data.password}
+                onChange={(e) => setData({ ...data, password: e.target.value })}
               />
 
               <p className="text-red-700 mb-1 error description-error"></p>
-              <label htmlFor="Gender">Your Gender : </label>
-              <select name="gender" className="font-semibold text-red-700">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+              <label className="font-semibold" htmlFor="Gender">
+                Gender :{" "}
+              </label>
+              <select
+                name="gender"
+                className="font-semibold bg-transparent text-black border-0"
+              >
+                <option className="text-gray-700" value="male">
+                  Male
+                </option>
+                <option className="text-gray-700" value="female">
+                  Female
+                </option>
               </select>
               <p className="text-red-700 mb-1 error description-error"></p>
 
@@ -126,12 +131,12 @@ const Signup = () => {
               </p>
             </div>
           </div>
-          <div className="text-black m-2 text-sm text-center">
-            Drag to resize your Input Fields and put your informations
-            comfortly!
-          </div>
+
           <div className="flex">
-            <a className="no-underline text-black font-semibold" href="/">
+            <a
+              className="no-underline border-2 p-2 rounded-2xl hover:bg-white hover:text-black transition-all hover:rounded-none text-white font-semibold"
+              href="/"
+            >
               &larr; Go Home
             </a>
           </div>

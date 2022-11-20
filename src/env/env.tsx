@@ -1,7 +1,7 @@
 const env = {
   app: "haxxGanga",
   appSub: "Your Hack Assistant! 🖤",
-  mail: "haxxganga@gmail.com",
+  mail: "support@haxxganga.com",
   tools: [
     {
       name: "emailSender",
