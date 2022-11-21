@@ -2,9 +2,7 @@ import React, { useEffect } from "react"
 import env from "../../env/env"
 
 const Readme = () => {
-  useEffect(() => {
-    document.title = "Documentations - Pacha"
-  })
+
   return (
     <div className="mx-4 my-7 md:mx-10">
       <span className="text-red-600 text-2xl">#</span>

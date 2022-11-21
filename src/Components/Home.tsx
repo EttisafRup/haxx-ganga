@@ -3,6 +3,7 @@ import { lazy, Suspense, useEffect } from "react"
 import env from "../env/env"
 import Readme from "./Common/Readme"
 import Users from "./Common/Users"
+import Loading from "./Common/Hold/Loading"
 const Tools = lazy(() => import("./Common/Tools"))
 
 const Home = () => {
@@ -21,10 +22,14 @@ const Home = () => {
             {env.appSub}
           </p>
         </div>
-        <p className="m-5"></p>
-        <Users />
-        <Readme />
-        <Tools />
+        <Suspense fallback={<Loading />}>
+          <p className="m-5"></p>
+          <Users />
+          <p className="m-5"></p>
+          <Tools />
+          <p className="m-5"></p>
+          <Readme />
+        </Suspense>
       </section>
     </>
   )

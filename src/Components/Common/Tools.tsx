@@ -15,7 +15,7 @@ const Tools = () => {
   return (
     <div>
       <big className="text-2xl font-semibold text-black mx-3">
-        <span className="text-red-600">A</span>vailable Tools :
+        <span className="text-red-600">A</span>vailable Tools
       </big>
       <p className="m-5"></p>
 
