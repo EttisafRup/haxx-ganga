@@ -10,11 +10,11 @@ Backend (nodeJs) Public Code :https://github.com/EttisafRup/haxx-ganga-server/
 
 Details :
 
-- Language : Javascript
-- Stack/Technology : MERN
-- Frontend : ReactJs 
-- Runtime : nodeJs
-- Database : (NOSQL) mongoDB
+- <b<Language</b> : Javascript
+- <b<Stack</b>/Technology : MERN
+- <b<Frontend</b> : ReactJs 
+- <b<Runtime</b> : nodeJs
+- <b<Database</b> : (NOSQL) mongoDB
 
 It's an Open sourced project, anybody can contribute here!
 Star the repository to show your support 😘🥰
