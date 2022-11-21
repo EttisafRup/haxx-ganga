@@ -8,25 +8,29 @@ const Signup = () => {
     mobile: "",
     password: "",
   })
-  console.log(data)
+  const [err, setErr] = useState({
+    username: { msg: "" },
+    email: { msg: "" },
+    mobile: { msg: "" },
+    password: { msg: "" },
+  })
   const [emailUpdate, setEmailUpdate] = useState("")
 
   const submitUserForm = async (e: any) => {
     e.preventDefault()
     try {
-      console.log("SUmbitton")
       const result = await axios.post(env.server + "/signup", data)
       setEmailUpdate(result.data.success)
-      console.log(result)
-      result.data.success
-        ? setTimeout(() => {
-            location.replace("/signup/otp-validation")
-          }, 3000)
-        : null
-    } catch (err) {
-      console.log(err)
-    }
+      if (result.data.success) {
+        setTimeout(() => {
+          location.replace("/signup/otp-validation")
+        }, 3000)
+      } else if (result.data.err) {
+        setErr(result.data.err)
+      }
+    } catch (err) {}
   }
+
   return (
     <section className="mt-6 text-gray-600 body-font">
       <div className="home container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
@@ -82,7 +86,9 @@ const Signup = () => {
               onChange={(e) => setData({ ...data, username: e.target.value })}
             />
 
-            <p className="text-red-700 mb-1 error title-error">{}</p>
+            <p className="text-red-700 mb-1 error title-error">
+              {err.username && err.username.msg}
+            </p>
 
             <input
               className="block border w-full h-12 p-3 rounded mb-4"
@@ -92,7 +98,9 @@ const Signup = () => {
               onChange={(e) => setData({ ...data, email: e.target.value })}
             />
 
-            <p className="text-red-700 mb-1 error subtitle-error"></p>
+            <p className="text-red-700 mb-1 error subtitle-error">
+              {err.email && err.email.msg}
+            </p>
             <input
               className="block border h-12  w-full p-3 rounded mb-4"
               name="mobile"
@@ -101,7 +109,9 @@ const Signup = () => {
               onChange={(e) => setData({ ...data, mobile: e.target.value })}
             />
 
-            <p className="text-red-700 mb-1 error description-error"></p>
+            <p className="text-red-700 mb-1 error description-error">
+              {err.mobile && err.mobile.msg}
+            </p>
 
             <input
               className="block border h-12  w-full p-3 rounded mb-4"
@@ -112,7 +122,9 @@ const Signup = () => {
               onChange={(e) => setData({ ...data, password: e.target.value })}
             />
 
-            <p className="text-red-700 mb-1 error description-error"></p>
+            <p className="text-red-700 mb-1 error description-error">
+              {err.password && err.password.msg}
+            </p>
             <label className="font-semibold" htmlFor="Gender">
               Gender :{" "}
             </label>
@@ -127,7 +139,6 @@ const Signup = () => {
                 Female
               </option>
             </select>
-            <p className="text-red-700 mb-1 error description-error"></p>
 
             <button
               type="submit"
