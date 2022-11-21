@@ -2,17 +2,13 @@ import { useEffect, useState } from "react"
 import env from "../env/env"
 
 const Login = () => {
-  const [image, setImage] = useState("")
-  useEffect(() => {
-    setImage("https://i.ibb.co/44MGZK0/okooko.png")
-  })
   return (
     <div>
       <section className="mt-6 text-gray-600 body-font">
         <div className="home container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
           <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
             <img
-              src={image}
+              src="https://i.ibb.co/44MGZK0/okooko.png"
               width="100%"
               className="absolute inset-0 bg-cover"
             />
