@@ -1,7 +1,9 @@
 import axios from "axios"
-import { useEffect } from "react"
+import { lazy, Suspense, useEffect } from "react"
 import env from "../env/env"
-import Tools from "./Common/Tools"
+import Readme from "./Common/Readme"
+import Users from "./Common/Users"
+const Tools = lazy(() => import("./Common/Tools"))
 
 const Home = () => {
   useEffect(() => {
@@ -20,6 +22,8 @@ const Home = () => {
           </p>
         </div>
         <p className="m-5"></p>
+        <Users />
+        <Readme />
         <Tools />
       </section>
     </>
