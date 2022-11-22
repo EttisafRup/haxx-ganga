@@ -12,7 +12,7 @@ const Readme = () => {
         <div className="container px-5 py-2 mx-auto flex flex-wrap">
           <div className="flex items-center align-center flex-col w-full">
             <img
-              className="object-cover object-center rounded-lg"
+              className="object-cover object-center rounded-lg md:w-full md:h-72"
               src="./ok.png"
               alt="step"
             />
