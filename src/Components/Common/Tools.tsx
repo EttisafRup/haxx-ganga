@@ -1,16 +1,18 @@
 import axios from "axios"
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import env from "../../env/env"
 
 const Tools = () => {
   const [tools, setTools] = useState<any[]>([])
 
-  axios
-    .get(env.server + "/tools")
-    .then((data) => {
-      setTools(data.data.tools)
-    })
-    .catch((err) => console.log(err))
+  useMemo(() => {
+    axios
+      .get(env.server + "/tools")
+      .then((data) => {
+        setTools(data.data.tools)
+      })
+      .catch((err) => console.log(err))
+  }, [tools])
 
   return (
     <div>
@@ -19,7 +21,7 @@ const Tools = () => {
       </big>
       <p className="m-5"></p>
 
-      <div className="flex flex-wrap mx-3">
+      <div className="flex flex-wrap items-center justify-center flex-row-reverse mx-3">
         {tools.map((elem) => {
           return (
             <div className="cursor-pointer p-2 lg:w-1/3 md:w-1/2 w-full">

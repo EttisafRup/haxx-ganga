@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { redirect } from "react-router-dom"
 
-import env from "../../env/env"
+import env from "../../../env/env"
 const Error = () => {
   useEffect(() => {
     document.title = `Error 404 - ${env.app}`

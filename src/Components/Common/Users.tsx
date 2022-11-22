@@ -1,17 +1,18 @@
 import axios from "axios"
-import React, { useState } from "react"
+import React, { useMemo, useState } from "react"
 import env from "../../env/env"
 import CountUp from "react-countup"
 
 const Users = () => {
   const [users, setUsers] = useState<any[]>([])
-
-  axios
-    .get(env.server + "/users")
-    .then((data) => {
-      setUsers(data.data.users)
-    })
-    .catch((err) => console.log(err))
+  useMemo(() => {
+    axios
+      .get(env.server + "/users")
+      .then((data) => {
+        setUsers(data.data.users)
+      })
+      .catch((err) => console.log(err))
+  }, [users])
 
   return (
     <div>
@@ -38,7 +39,7 @@ const Users = () => {
                   >
                     <img
                       alt={elem.username}
-                      className="w-10 h-10 md:w-20 md:h-20 m-1 md:m-2 rounded-full"
+                      className="w-10 h-10 m-1 md:m-2 rounded-full"
                       src={elem.avatar}
                     />
                   </a>

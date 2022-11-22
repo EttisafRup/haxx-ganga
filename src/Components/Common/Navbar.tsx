@@ -27,6 +27,9 @@ const Navbar = () => {
             <a href="/readme" className="mr-5 font-bold">
               README
             </a>
+            <a href="/tools" className="mr-5 font-bold">
+              TOOLS
+            </a>
           </nav>
           <a href="/signup">
             <button className="inline-flex items-center transition-all bg-black border-0 py-1 px-3 focus:outline-none hover:bg-gray-800 rounded text-white mt-4 md:mt-0">
@@ -103,6 +106,14 @@ const Navbar = () => {
                     className="bangla font-bold tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
                   >
                     README
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/tools"
+                    className="bangla font-bold tracking-wide text-black transition-colors duration-200 hover:text-deep-purple-accent-400"
+                  >
+                    TOOLS
                   </a>
                 </li>
 
