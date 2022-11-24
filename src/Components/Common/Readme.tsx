@@ -7,9 +7,8 @@ const Readme = () => {
       <span className="text-red-700 text-2xl">#</span>
       <big className="md:text-3xl text-xl font-semibold">{env.app}</big>
       <p className="text-base ml-4">{env.appSub}</p>
-
       <div>
-        <div className="container px-5 py-2 mx-auto flex flex-wrap">
+        <div className="container px-5 py-2 mx-auto flex flex-wrap md:flex-row">
           <div className="flex items-center align-center flex-col w-full">
             <img
               className="object-cover object-center rounded-lg md:w-full md:h-72"
@@ -18,32 +17,29 @@ const Readme = () => {
             />
           </div>
         </div>
+        <blockquote className="border-l-4 border-red-500 italic my-8 pl-8 md:pl-12">
+          <big className="font-bold text-red-700">WARNING!</big>
+          <p className="text-base mt-5">
+            Before using {env.app}, please make sure that you've checked out our{" "}
+            <a className="text-red-700 font-bold" href="">
+              Terms and Policy
+            </a>{" "}
+            and agree with it.
+            <p></p>
+            Please note that, there are some limitations of using our tools. We
+            can only allow you to use our tools for educational Purpose only!{" "}
+            <p className="mt-3"></p>
+            <strong>
+              If you misused these tools, we are not gonna be responsible for
+              it.
+            </strong>
+          </p>
+        </blockquote>
       </div>
-
-      <blockquote className="border-l-4 border-red-500 italic my-8 pl-8 md:pl-12">
-        <big className="font-bold text-red-700">WARNING!</big>
-        <p className="text-base mt-5">
-          Before using {env.app}, please make sure that you've checked out our{" "}
-          <a className="text-red-700 font-bold" href="">
-            Terms and Policy
-          </a>{" "}
-          and agree with it.
-          <p></p>
-          Please note that, there are some limitations of using our tools. We
-          can only allow you to use our tools for educational Purpose only!{" "}
-          <p className="mt-3"></p>
-          <strong>
-            If you misused these tools, we are not gonna be responsible for it.
-          </strong>
-        </p>
-      </blockquote>
-
       <big className="text-base font-semibold">
         For initializing, follow these steps :
       </big>
-
       <p className="mb-5"></p>
-
       <div className="block md:flex md:flex-row items-center justify-center">
         <div className="flex relative pb-12">
           <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-500 inline-flex items-center justify-center text-white relative z-10">
@@ -131,7 +127,6 @@ const Readme = () => {
           </p>
         </div>
       </div>
-
       <p className="text-xl mt-5 font-medium ">
         Have a great time, Hacker!! 😉
       </p>

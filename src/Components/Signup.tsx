@@ -28,7 +28,9 @@ const Signup = () => {
       } else if (result.data.err) {
         setErr(result.data.err)
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (

@@ -1,7 +1,30 @@
-import { useEffect, useState } from "react"
+import axios from "axios"
+import { useEffect, useMemo, useState } from "react"
 import env from "../env/env"
 
 const Login = () => {
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  })
+  const [err, setErr] = useState({ err: "", success: "" })
+
+  const submitForm = async (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    try {
+      console.log(data)
+      const result = await axios.post(env.server + "/login", data)
+      if (result.data.err) {
+        setErr({ ...err, err: result.data.msg })
+      } else if (result.data.token) {
+        setErr({ err: "", success: "Login was Successfull!" })
+        localStorage.setItem("auth", result.data.token)
+      }
+      console.log(result)
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return (
     <div>
       <section className="mt-6 text-gray-600 body-font">
@@ -36,6 +59,10 @@ const Login = () => {
             <p className="leading-relaxed mb-5 text-gray-600">
               {env.app}, {env.appSub}
             </p>
+            <div className="flex flex-row">
+              <p className="text-sm mb-5 text-red-600">{err.err}</p>
+              <p className="text-sm mb-5 text-green-600">{err.success}</p>
+            </div>
             <div className="relative mb-4">
               <label
                 htmlFor="email"
@@ -47,6 +74,8 @@ const Login = () => {
                 type="email"
                 id="email"
                 name="email"
+                value={data.email}
+                onChange={(e) => setData({ ...data, email: e.target.value })}
                 className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-700 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
@@ -61,11 +90,16 @@ const Login = () => {
                 type="password"
                 id="password"
                 name="password"
+                value={data.password}
+                onChange={(e) => setData({ ...data, password: e.target.value })}
                 className="w-full bg-white rounded border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-700 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
             </div>
 
-            <button className="text-white bg-red-700 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">
+            <button
+              onClick={submitForm}
+              className="text-white bg-red-700 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"
+            >
               Login
             </button>
             <p className="text-sm text-gray-500 mt-3 text-center">
