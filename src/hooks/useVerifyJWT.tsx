@@ -4,7 +4,6 @@ import axios from "axios"
 import env from "../env/env"
 
 const checkJWT = async (path: string, redirectpath: string) => {
-  const navigate = useNavigate()
   const userAuthToken = localStorage.getItem("auth")
   const result = await axios.get(env.server + `${path}`, {
     headers: {
@@ -14,8 +13,10 @@ const checkJWT = async (path: string, redirectpath: string) => {
   console.log(result)
   if (result.data.success === true) {
     location.replace(`${redirectpath}`)
+  } else if (result.data.success === false) {
+    null
   } else {
-    location.replace(`${path}`)
+    localStorage.clear()
   }
 }
 
