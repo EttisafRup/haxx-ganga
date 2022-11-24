@@ -1,5 +1,6 @@
 import env from "../../../env/env"
 import CountUp from "react-countup"
+
 const Loading = () => {
   return (
     <div>

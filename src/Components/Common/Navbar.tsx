@@ -1,6 +1,15 @@
+import axios from "axios"
 import { useRef } from "react"
+import env from "../../env/env"
 
 const Navbar = () => {
+  async function check() {
+    const userAuthToken = localStorage.getItem("auth")
+    const result = await axios.get(env.server + "/login", {
+      headers: { Auth: userAuthToken },
+    })
+    return result
+  }
   const navRef: any = useRef()
   const popNavigator = () => {
     if (document.getElementsByClassName("home")[0])
@@ -31,16 +40,18 @@ const Navbar = () => {
               TOOLS
             </a>
           </nav>
-          <a href="/signup">
-            <button className="inline-flex items-center transition-all bg-black border-0 py-1 px-3 focus:outline-none hover:bg-gray-800 rounded text-white mt-4 md:mt-0">
-              Signup
-            </button>
-          </a>
-          <a href="/login">
-            <button className="inline-flex items-center bg-red-700 transition-all border-0 py-1 px-3 ml-2 focus:outline-none hover:bg-gray-900 rounded text-white mt-4 md:mt-0">
-              LogIn
-            </button>
-          </a>
+          <>
+            <a href="/signup">
+              <button className="inline-flex items-center transition-all bg-black border-0 py-1 px-3 focus:outline-none hover:bg-gray-800 rounded text-white mt-4 md:mt-0">
+                Signup
+              </button>
+            </a>
+            <a href="/login">
+              <button className="inline-flex items-center bg-red-700 transition-all border-0 py-1 px-3 ml-2 focus:outline-none hover:bg-gray-900 rounded text-white mt-4 md:mt-0">
+                LogIn
+              </button>
+            </a>
+          </>
         </div>
       </div>
       {/* Button Hamburger */}

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 import env from "../env/env"
 import axios from "axios"
+import useVerifyJWT from "../hooks/useVerifyJWT"
+
 const Signup = () => {
+  useVerifyJWT("/login", "/")
   const [data, setData] = useState({
     username: "",
     email: "",

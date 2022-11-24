@@ -1,8 +1,12 @@
 import axios from "axios"
-import { useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import env from "../env/env"
+import useVerifyJWT from "../hooks/useVerifyJWT"
 
 const Login = () => {
+  if (localStorage.getItem("auth")) {
+    useVerifyJWT("/login", "/")
+  }
   const [data, setData] = useState({
     email: "",
     password: "",
