@@ -5,7 +5,7 @@ import useVerifyJWT from "../hooks/useVerifyJWT"
 
 const Signup = () => {
   if (localStorage.getItem("auth")) {
-    useVerifyJWT("/signup", "/")
+    useVerifyJWT("/verifyjwt", "/")
   } else {
     const [data, setData] = useState({
       username: "",

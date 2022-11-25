@@ -5,11 +5,12 @@ import env from "../../env/env"
 const Navbar = () => {
   async function check() {
     const userAuthToken = localStorage.getItem("auth")
-    const result = await axios.get(env.server + "/login", {
+    const result = await axios.get(env.server + "/verifyjwt", {
       headers: { Auth: userAuthToken },
     })
     return result
   }
+
   const navRef: any = useRef()
   const popNavigator = () => {
     if (document.getElementsByClassName("home")[0]) {
