@@ -19,13 +19,23 @@ const Signup = () => {
       mobile: { msg: "" },
       password: { msg: "" },
     })
-    const [emailUpdate, setEmailUpdate] = useState("")
+    const [update, setUpdate] = useState({
+      emailUpdate: "",
+      processingUpdate: "",
+    })
 
     const submitUserForm = async (e: any) => {
       e.preventDefault()
+      setErr({
+        username: { msg: "" },
+        email: { msg: "" },
+        mobile: { msg: "" },
+        password: { msg: "" },
+      })
+      setUpdate({ ...update, processingUpdate: "Processing your request..." })
       try {
         const result = await axios.post(env.server + "/signup", data)
-        setEmailUpdate(result.data.success)
+        setUpdate({ ...update, emailUpdate: result.data.success })
         if (result.data.success) {
           setTimeout(() => {
             location.replace("/signup/otp-validation")
@@ -73,7 +83,10 @@ const Signup = () => {
             <p className="leading-relaxed mb-5 text-gray-600">
               {env.app}, {env.appSub}
             </p>
-            <p className="text-sm text-gray-600">{emailUpdate}</p>
+            <p className="text-sm text-gray-600">{update.emailUpdate}</p>
+            <p className="font-semibold text-base text-gray-600">
+              {update.processingUpdate}
+            </p>
             <form id="blog-form" method="post" action="/register">
               {/* <div className="avatar-div">
                 <label className="avatar-label text-black" htmlFor="inputTag">

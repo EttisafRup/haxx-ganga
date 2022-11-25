@@ -15,6 +15,7 @@ const Login = () => {
 
     const submitForm = async (e: { preventDefault: () => void }) => {
       e.preventDefault()
+      setErr({ success: "", err: "Processing your request..." })
       try {
         console.log(data)
         const result = await axios.post(env.server + "/login", data)
@@ -63,7 +64,7 @@ const Login = () => {
               <p className="leading-relaxed mb-5 text-gray-600">
                 {env.app}, {env.appSub}
               </p>
-              <div className="flex flex-row">
+              <div className="font-semibold flex flex-row">
                 <p className="text-sm mb-5 text-red-600">{err.err}</p>
                 <p className="text-sm mb-5 text-green-600">{err.success}</p>
               </div>
