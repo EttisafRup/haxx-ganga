@@ -12,11 +12,9 @@ const Navbar = () => {
   }
   const navRef: any = useRef()
   const popNavigator = () => {
-    if (document.getElementsByClassName("home")[0])
-      document
-        .getElementsByClassName("home")[0]
-        .classList.toggle("animatedhide")
-
+    if (document.getElementsByClassName("home")[0]) {
+      document.getElementsByClassName("home")[0].classList.toggle("hidden")
+    }
     navRef.current.classList.toggle("animatedhide")
   }
 

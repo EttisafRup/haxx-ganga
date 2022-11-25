@@ -3,7 +3,7 @@ import env from "../../env/env"
 
 const Readme = () => {
   return (
-    <div className="mx-4 my-7 md:mx-10">
+    <div className="readmespace mx-4 my-7 md:mx-10">
       <span className="text-red-700 text-2xl">#</span>
       <big className="md:text-3xl text-xl font-semibold">{env.app}</big>
       <p className="text-base ml-4">{env.appSub}</p>
