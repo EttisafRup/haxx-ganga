@@ -4,9 +4,10 @@ import env from "../env/env"
 import useVerifyJWT from "../hooks/useVerifyJWT"
 
 const Login = () => {
-  if (localStorage.getItem("auth")) {
-    useVerifyJWT("/verifyjwt", "/")
-  } else {
+  if (localStorage.getItem("auth")){
+
+    useVerifyJWT("/")
+  }
     const [data, setData] = useState({
       email: "",
       password: "",
@@ -123,6 +124,6 @@ const Login = () => {
         </section>
       </div>
     )
-  }
+  
 }
 export default Login

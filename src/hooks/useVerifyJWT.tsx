@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import env from "../env/env"
 
-const checkJWT = async (path: string, redirectpath: string) => {
+const checkJWT = async (redirectpath: string) => {
   const userAuthToken = localStorage.getItem("auth")
-  const result = await axios.get(env.server + `${path}`, {
+  const result = await axios.get(env.server + "/verifyjwt", {
     headers: {
       Auth: userAuthToken,
     },
