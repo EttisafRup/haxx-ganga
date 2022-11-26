@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <>
-      <section className="mt-12 md:mt-0 home text-gray-600 body-font">
+      <section className="mt-12 md:mt-0 text-gray-600 body-font">
         <div>
           <div className="fancybg py-8 h-72 flex flex-col justify-center shadow-lg rounded">
             <h1 className="text-center text-3xl md:text-5xl text-white">
