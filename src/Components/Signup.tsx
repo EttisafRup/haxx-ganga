@@ -2,10 +2,12 @@ import { useEffect, useMemo, useState } from "react"
 import env from "../env/env"
 import axios from "axios"
 import useVerifyJWT from "../hooks/useVerifyJWT"
+import Error from "./Common/Hold/Error"
 
 const Signup = () => {
   if (localStorage.getItem("auth")) {
     useVerifyJWT("/")
+    return <Error message="You're already signed in!" />
   }
   const [data, setData] = useState({
     username: "",

@@ -12,7 +12,9 @@ const checkJWT = async (redirectpath: string) => {
   })
   console.log(result)
   if (result.data.success === true) {
-    location.replace(`${redirectpath}`)
+    setTimeout(() => {
+      location.replace(`${redirectpath}`)
+    }, 3000)
   } else if (result.data.success === false) {
     null
   } else {
