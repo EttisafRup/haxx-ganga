@@ -1,8 +1,39 @@
 import axios from "axios"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import env from "../../env/env"
 
 const Navbar = () => {
+  const [logButton, setLogButton] = useState({
+    log: "Login",
+    reg: "Signup",
+  })
+  function clearAuthentication() {
+    if (localStorage.getItem("auth")) {
+      localStorage.removeItem("auth")
+      location.reload()
+    } else {
+      location.replace("/login")
+    }
+  }
+  async function updateLogButton() {
+    const userAuthToken = localStorage.getItem("auth")
+    const result = await axios.get(env.server + "/verifyjwt", {
+      headers: {
+        Auth: userAuthToken,
+      },
+    })
+    if (result.data.success === true) {
+      return setLogButton({
+        log: "Logout",
+        reg: "Home",
+      })
+    }
+  }
+
+  useEffect(() => {
+    updateLogButton()
+  })
+
   const navRef: any = useRef()
   const popNavigator = () => {
     if (document.getElementsByClassName("home")[0]) {
@@ -10,7 +41,6 @@ const Navbar = () => {
     }
     navRef.current.classList.toggle("animatedhide")
   }
-
   return (
     <header className="text-gray-600 body-font shadow-lg">
       <div className="hidden gradient w-full lg:block border-b text-white">
@@ -32,14 +62,14 @@ const Navbar = () => {
             </a>
           </nav>
           <>
-            <a href="/signup">
+            <a href={`/${logButton.reg.toLowerCase()}`}>
               <button className="inline-flex items-center transition-all bg-black border-0 py-1 px-3 focus:outline-none hover:bg-gray-800 rounded text-white mt-4 md:mt-0">
-                Signup
+                {logButton.reg}
               </button>
             </a>
-            <a href="/login">
+            <a onClick={clearAuthentication}>
               <button className="inline-flex items-center bg-red-700 transition-all border-0 py-1 px-3 ml-2 focus:outline-none hover:bg-gray-900 rounded text-white mt-4 md:mt-0">
-                LogIn
+                {logButton.log}
               </button>
             </a>
           </>
@@ -120,15 +150,15 @@ const Navbar = () => {
                 </li>
 
                 <div className="py-3">
-                  <a href="/signup">
+                  <a href={`/${logButton.reg.toLowerCase()}`}>
                     <button className="inline-flex items-center transition-all bg-black border-0 py-1 px-3 focus:outline-none hover:bg-gray-800 rounded text-white mt-4 md:mt-0">
-                      Signup
+                      {logButton.reg}
                     </button>
                   </a>
 
-                  <a href="/login">
+                  <a onClick={clearAuthentication}>
                     <button className="inline-flex items-center bg-red-700 transition-all border-0 py-1 px-3 ml-2 focus:outline-none hover:bg-gray-900 rounded text-white mt-4 md:mt-0">
-                      LogIn
+                      {logButton.log}
                     </button>
                   </a>
                 </div>

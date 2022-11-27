@@ -23,9 +23,10 @@ const Login = () => {
       const result = await axios.post(env.server + "/login", data)
       if (result.data.err) {
         setErr({ ...err, err: result.data.msg })
-      } else if (result.data.token) {
-        setErr({ err: "", success: "Login was Successfull!" })
+      } else if (result.data.success) {
         localStorage.setItem("auth", result.data.token)
+        setErr({ ...err, success: "Login was Successful!" })
+        location.replace("/home")
       }
       console.log(result)
     } catch (err) {
