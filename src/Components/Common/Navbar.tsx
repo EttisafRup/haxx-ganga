@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import env from "../../env/env"
 
 const Navbar = () => {
@@ -7,6 +7,19 @@ const Navbar = () => {
     log: "Login",
     reg: "Signup",
   })
+  function updateLogButton() {
+    if (localStorage.getItem("auth")) {
+      return setLogButton({
+        log: "Logout",
+        reg: "Dev",
+      })
+    }
+  }
+
+  useEffect(() => {
+    updateLogButton()
+  }, [])
+
   function clearAuthentication() {
     if (localStorage.getItem("auth")) {
       localStorage.removeItem("auth")
@@ -15,25 +28,6 @@ const Navbar = () => {
       location.replace("/login")
     }
   }
-  async function updateLogButton() {
-    const userAuthToken = localStorage.getItem("auth")
-    const result = await axios.get(env.server + "/verifyjwt", {
-      headers: {
-        Auth: userAuthToken,
-      },
-    })
-    if (result.data.success === true) {
-      return setLogButton({
-        log: "Logout",
-        reg: "Home",
-      })
-    }
-  }
-
-  useEffect(() => {
-    updateLogButton()
-  })
-
   const navRef: any = useRef()
   const popNavigator = () => {
     if (document.getElementsByClassName("home")[0]) {

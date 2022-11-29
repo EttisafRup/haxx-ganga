@@ -6,7 +6,7 @@ import Error from "./Common/Hold/Error"
 
 const Signup = () => {
   if (localStorage.getItem("auth")) {
-    useVerifyJWT("/")
+    useVerifyJWT("/dev")
     return <Error message="You're already signed in!" />
   }
   const [data, setData] = useState({

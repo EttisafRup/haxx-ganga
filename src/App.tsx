@@ -11,6 +11,7 @@ const OTP = lazy(() => import("./Components/OTP"))
 import Readme from "./Components/Common/Readme"
 import Loading from "./Components/Common/Hold/Loading"
 import Tools from "./Components/Common/Tools"
+import Dev from "./Components/Dev"
 
 // Tools Route
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/readme" element={<Readme />} />
             <Route path="/tools" element={<Tools />} />
+            <Route path="/dev" element={<Dev />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </Suspense>

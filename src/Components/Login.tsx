@@ -6,7 +6,7 @@ import Error from "./Common/Hold/Error"
 
 const Login = () => {
   if (localStorage.getItem("auth")) {
-    useVerifyJWT("/")
+    useVerifyJWT("/dev")
     return <Error message="You're already logged in!" />
   }
   const [data, setData] = useState({
@@ -26,7 +26,7 @@ const Login = () => {
       } else if (result.data.success) {
         localStorage.setItem("auth", result.data.token)
         setErr({ ...err, success: "Login was Successful!" })
-        location.replace("/home")
+        location.replace("/dev")
       }
       console.log(result)
     } catch (err) {

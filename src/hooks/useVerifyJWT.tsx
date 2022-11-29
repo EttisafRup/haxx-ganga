@@ -19,6 +19,7 @@ const checkJWT = async (redirectpath: string) => {
     null
   } else {
     localStorage.clear()
+    location.replace(`${redirectpath}`)
   }
 }
 
