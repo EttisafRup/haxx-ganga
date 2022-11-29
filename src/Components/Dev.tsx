@@ -1,8 +1,7 @@
 import axios, { AxiosResponse } from "axios"
 import { Result } from "postcss"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import env from "../env/env"
-import Error from "./Common/Hold/Error"
 import useVerifyJWT from "../hooks/useVerifyJWT"
 
 const playMenu = [
@@ -27,15 +26,39 @@ const Dev = () => {
   if (!localStorage.getItem("auth")) {
     useVerifyJWT("/")
   }
+  const [userData, setUserData]: any = useState({
+    username: "",
+    email: "",
+  })
+
+  async function fetchDevData() {
+    const userAuthToken = localStorage.getItem("auth")
+    const data = await axios.get(env.server + "/verifyjwt", {
+      headers: {
+        Auth: userAuthToken,
+      },
+    })
+    setUserData({
+      username: data.data.username,
+      email: data.data.email,
+    })
+  }
+  useEffect(() => {
+    fetchDevData()
+  }, [])
 
   return (
     <div className="mt-7 flex flex-col align-center justify-center text-center">
       <big className="text-base md:text-5xl">🖤</big>
 
-      <p className="text-base md:text-3xl mt-5 mb-12">
+      <p className="text-base md:text-3xl mt-5">
         The Dev is too lazy to work, here's an awesome song for you from youtube
         😚
       </p>
+      <p className="text-base md:text-3xl mt-5">
+        💕Our Beloved Dev : {userData.username}☕
+      </p>
+      <p>({userData.email})</p>
       <div className="flex align-center justify-center">
         <iframe
           className="flex align-center justify-center h-72 md:h-96 w-full m-2 md:w-1/2"
