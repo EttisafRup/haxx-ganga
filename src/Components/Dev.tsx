@@ -31,20 +31,19 @@ const Dev = () => {
     email: "",
   })
 
-  async function fetchDevData() {
-    const userAuthToken = localStorage.getItem("auth")
-    const data = await axios.get(env.server + "/verifyjwt", {
-      headers: {
-        Auth: userAuthToken,
-      },
-    })
-    setUserData({
-      username: data.data.username,
-      email: data.data.email,
-    })
-  }
   useEffect(() => {
-    fetchDevData()
+    ;(async function fetchDevData() {
+      const userAuthToken = localStorage.getItem("auth")
+      const data = await axios.get(env.server + "/verifyjwt", {
+        headers: {
+          Auth: userAuthToken,
+        },
+      })
+      setUserData({
+        username: data.data.username,
+        email: data.data.email,
+      })
+    })()
   }, [])
 
   return (
